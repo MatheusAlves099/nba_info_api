@@ -12,7 +12,7 @@ a {
 
 a:hover {
     transform: scale(1.2);
-    color: red;
+    color: goldenrod;
 }
 
 ul, li, ol {
@@ -32,8 +32,9 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2rem;
-    gap: 30px;
+    gap: 50px;
     text-transform: uppercase;
+    border-bottom: 1px solid goldenrod;
 }
 
 #root {
@@ -72,7 +73,7 @@ body {
 
 .description {
     font-size: 2.5rem;
-    width: 30vw;
+    width: 37vw;
     text-align: start;
 }
 
@@ -100,6 +101,10 @@ body {
 }
 
 .container-teams {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
     background-color: black;
     background-image: url(../img/teams_nba.png);
     background-repeat: no-repeat;
@@ -107,5 +112,12 @@ body {
 }
 
 .container-players {
-    background-color: rgb(19, 70, 128);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    background-color: black;
+    background-image: url(../img/players_nba.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
