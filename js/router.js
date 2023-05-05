@@ -1,5 +1,8 @@
 'use strict'
 
+import { carregarCard } from "./index.js"
+import { carregarCardJogador } from "./index.js"
+
 const routes = {
     '/'         : '/pages/home.html',
     '/teams' : '/pages/teams.html',
@@ -16,6 +19,12 @@ const route = async () => {
     const html = await response.text()
 
     document.getElementById('root').innerHTML = html
+
+    if(window.location.pathname == '/teams') {
+        carregarCard()
+    } else if (window.location.pathname == '/players') {
+        carregarCardJogador()
+    }
 }
 
 window.route = route

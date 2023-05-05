@@ -1,37 +1,44 @@
 'use strict'
 
-import { showTeams } from "./api"
-const teams = await showTeams();
+import './router.js'
+import { getTeams } from "./api.js"
+import { getPlayers } from './api.js';
 
-const criaCard = ( team ) => {
+const teams = await getTeams();
+const players = await getPlayers();
+
+const criarCard = ( team ) => {
+
     const card = document.createElement('card-nba')
-    card.classList.add('card')
-    card.setAttribute('teste', team.name)
-
-    const teamName = document.createElement('h5')
-    teamName.classList.add('card__text')
     card.nome = team.full_name
-    
-    const teamCity = document.createElement('p')
-    teamCity.classList.add('card__textCity')
     card.cidade = team.city
-
-    const teamConference = document.createElement('p')
-    teamConference.classList.add('card__textConference')
     card.conference = team.conference
-
-    card.append(teamName, teamCity, teamconference)
 
     return card
 }
 
 export const carregarCard = () => {
 
-    alert ('oi')
-    const container = document.getElementById('root')
-    const listTeams = teams.map( criaCard )
+    const card = document.getElementById('card-container')
+    const cardsTeams = teams.data.map( criarCard )
 
-    container.replaceChildren(...listTeams)
+    card.replaceChildren(...cardsTeams)
 }
 
-// carregarCard()
+const criarCardJogador = ( player ) => {
+
+    const card = document.createElement('card-nba-player')
+    card.nome = player.first_name + ' ' + player.last_name
+    card.posicao = player.position
+    card.time = player.team.full_name
+
+    return card
+}
+
+export const carregarCardJogador = () => {
+
+    const cardPlayer = document.getElementById('card-container')
+    const cardsPlayer = players.data.map( criarCardJogador )
+
+    cardPlayer.replaceChildren(...cardsPlayer)
+}

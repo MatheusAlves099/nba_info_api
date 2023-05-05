@@ -1,16 +1,17 @@
 'use strict'
 
-class card extends HTMLElement {
+class card_player extends HTMLElement {
     constructor() {
         super()
         this.shadow = this.attachShadow({ mode: 'open' })
-        this.nome = 'Nome do time'
-        this.cidade = 'Cidade do time'
-        this.conference = 'Conferencia do time'
+        this.nome = 'Nome do jogador'
+        this.lastName = ' '
+        this.posicao = 'Posicao do jogador'
+        this.time = 'Time do jogador'
     }
 
     static get observedAttributes() {
-        return ['nome', 'cidade', 'conference']
+        return ['nome', 'lastName', 'posicao', 'time']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -30,12 +31,12 @@ class card extends HTMLElement {
                 padding: 0;
                 box-sizing: border-box;
             }
-            .card {
+            .card_player {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-items: center;
-                height: 300px;
+                height: 330px;
                 width: 300px;
                 gap: 10px;
                 border: 1px solid #DDD;
@@ -46,22 +47,22 @@ class card extends HTMLElement {
                 background: linear-gradient(to right, blue, red);
                 opacity: 50%;
             }
-            .card:hover {
-                opacity: 100%;
-            }
             .card__image {
-                height: 150px;
+                height: 250px;
                 width: 150px;
-                background-image: url(../img/nba75_logo.png);
+                background-image: url(../img/logo_jordan_nba.png);
                 background-size: cover;
             }
-            .card__text {
+            .card_player:hover {
+                opacity: 100%;
+            }
+            .card__namePlayer {
                 font-size: 1.3rem;
             }
-            .card__textCity {
+            .card__positionPlayer {
                 font-size: 1.3rem;
             }
-            .card__textConference {
+            .card__teamPlayer {
                 font-size: 1.3rem;
             }
         `
@@ -70,24 +71,24 @@ class card extends HTMLElement {
     }
 
     component() {
-        const card = document.createElement('div')
-        card.classList.add ('card')
+        const card_player = document.createElement('div')
+        card_player.classList.add ('card_player')
         const imagem = document.createElement('div')
         imagem.classList.add ('card__image')
-        const nomeTime = document.createElement('div')
-        nomeTime.classList.add ('card__text')
-        nomeTime.textContent = this.nome
-        const cidade = document.createElement('div')
-        cidade.classList.add ('card__textCity')
-        cidade.textContent = this.cidade
-        const conferencia = document.createElement('div')
-        conferencia.classList.add ('card__textConference')
-        conferencia.textContent = this.conference
+        const nomeJogador = document.createElement('div')
+        nomeJogador.classList.add ('card__namePlayer')
+        nomeJogador.textContent = this.nome
+        const posicaoJogador = document.createElement('div')
+        posicaoJogador.classList.add ('card__positionPlayer')
+        posicaoJogador.textContent = this.posicao
+        const timeJogador = document.createElement('div')
+        timeJogador.classList.add ('card__teamPlayer')
+        timeJogador.textContent = this.time
 
-        card.append(imagem, nomeTime, cidade, conferencia)
+        card_player.append(imagem, nomeJogador, posicaoJogador, timeJogador)
         
-        return card
+        return card_player
     }
 }
 
-customElements.define('card-nba', card)
+customElements.define('card-nba-player', card_player)
