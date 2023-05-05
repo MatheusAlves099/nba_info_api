@@ -1,17 +1,17 @@
 'use strict'
 
-export const showTeams = async () => {
+export const getTeams = async () => {
     const url = `https://www.balldontlie.io/api/v1/teams`
     const response = await fetch(url)
-    const teams = await response.json()
+    const data = await response.json()
 
-    return teams
+    return data
 }
 
-export const showPlayers = async () => {
-    const url = `https://www.balldontlie.io/api/v1/players`
+export const getPlayers = async () => {
+    const url = `https://www.balldontlie.io/api/v1/players?=page=1`
     const response = await fetch(url)
-    const players = await response.json()
+    const data = await response.json()
 
-    return players
+    return data
 }
