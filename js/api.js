@@ -9,7 +9,7 @@ export const getTeams = async () => {
 }
 
 export const getPlayers = async () => {
-    const url = `https://www.balldontlie.io/api/v1/players?=page=1`
+    const url = `https://www.balldontlie.io/api/v1/players?page=182`
     const response = await fetch(url)
     const data = await response.json()
 
