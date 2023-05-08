@@ -3,6 +3,7 @@
 import './router.js'
 import { getTeams } from "./api.js"
 import { getPlayers } from './api.js';
+import { teams_logo } from './teams_logo.js';
 
 const teams = await getTeams();
 const players = await getPlayers();
@@ -10,10 +11,16 @@ const players = await getPlayers();
 const criarCard = ( team ) => {
 
     const card = document.createElement('card-nba')
+
+    const logo = document.createElement('img')
+    logo.classList.add('card__image')
+    card.logo = `./img/teams_logo/${team.image}`
+
     card.nome = team.full_name
     card.cidade = team.city
     card.conference = team.conference
 
+    card.append(logo)
     return card
 }
 

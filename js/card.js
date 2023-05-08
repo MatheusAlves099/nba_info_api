@@ -5,12 +5,13 @@ class card extends HTMLElement {
         super()
         this.shadow = this.attachShadow({ mode: 'open' })
         this.nome = 'Nome do time'
+        this.logo = null
         this.cidade = 'Cidade do time'
         this.conference = 'Conferencia do time'
     }
 
     static get observedAttributes() {
-        return ['nome', 'cidade', 'conference']
+        return ['logo', 'nome', 'cidade', 'conference']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -52,7 +53,7 @@ class card extends HTMLElement {
             .card__image {
                 height: 150px;
                 width: 150px;
-                background-image: url(../img/nba75_logo.png);
+                background-image: url(${this.logo});
                 background-size: cover;
             }
             .card__text {
