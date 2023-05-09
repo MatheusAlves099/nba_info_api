@@ -3,24 +3,18 @@
 import './router.js'
 import { getTeams } from "./api.js"
 import { getPlayers } from './api.js';
-import { teams_logo } from './teams_logo.js';
 
 const teams = await getTeams();
 const players = await getPlayers();
 
 const criarCard = ( team ) => {
-
     const card = document.createElement('card-nba')
 
-    const logo = document.createElement('img')
-    logo.classList.add('card__image')
-    card.logo = `./img/teams_logo/${team.image}`
-
+    card.logo = `../img/logos/${team.abbreviation}.png`
     card.nome = team.full_name
     card.cidade = team.city
     card.conference = team.conference
-
-    card.append(logo)
+    
     return card
 }
 
@@ -33,8 +27,9 @@ export const carregarCard = () => {
 }
 
 const criarCardJogador = ( player ) => {
-
     const card = document.createElement('card-nba-player')
+
+    card.foto = `../img/players/${player.first_name}.png`
     card.nome = player.first_name + ' ' + player.last_name
     card.posicao = player.position
     card.time = player.team.full_name

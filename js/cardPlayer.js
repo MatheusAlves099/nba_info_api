@@ -5,13 +5,14 @@ class card_player extends HTMLElement {
         super()
         this.shadow = this.attachShadow({ mode: 'open' })
         this.nome = 'Nome do jogador'
+        this.foto = null
         this.lastName = ' '
         this.posicao = 'Posicao do jogador'
         this.time = 'Time do jogador'
     }
 
     static get observedAttributes() {
-        return ['nome', 'lastName', 'posicao', 'time']
+        return ['foto', 'nome', 'lastName', 'posicao', 'time']
     }
 
     attributeChangedCallback(nameAttr, oldValue, newValue){
@@ -49,8 +50,8 @@ class card_player extends HTMLElement {
             }
             .card__image {
                 height: 250px;
-                width: 150px;
-                background-image: url(../img/logo_jordan_nba.png);
+                width: 250px;
+                background-image: url(${this.foto});
                 background-size: cover;
             }
             .card_player:hover {
